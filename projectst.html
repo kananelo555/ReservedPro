@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Reserved Projects</title>
+    <link rel="stylesheet" href="css/index.css">
+
+    <style>
+        html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Flex-grow the main content to fill the available space */
+#project {
+    flex: 1;  /* This allows the content to grow and fill the space between the header and footer */
+}
+        /* Modal styles */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8); 
+        }
+        .modal-content {
+            margin: 15% auto; 
+            padding: 20px;
+            width: 80%; 
+            max-width: 700px;
+        }
+        .close {
+            color: #fff;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: #999;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 30px;
+    font-size: 14px;
+    margin-top: 80px;
+}
+    </style>
+</head>
+<body>
+
+    <div id="navigation-bar">
+        <img src="images/nobck.png" alt="Reserved Projects">
+    </div>
+    
+    <div id="project">
+        <div class="project-header">
+            <span class="color"> Discover some of </span> our work
+        </div>
+
+        <div class="container">
+            <h2>Telenovelas</h2>
+            <div class="row">
+                <div class="project-card" data-video="video1">
+                    <img src="images/umkhokha.jpg" alt="Umkhokha - The Curse">
+                    <p>Umkhokha - The Curse</p>
+                </div>
+
+                <div class="project-card" data-video="video2">
+                    <img src="images/mbk.jpg" alt="My Brother's Keeper">
+                    <p>My Brother's Keeper</p>
+                </div>
+
+                <div class="project-card" data-video="video3">
+                    <img src="images/QL.jpg" alt="The Queen">
+                    <p>A Queen's Lobola</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Modals -->
+    <div id="video1" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <video width="100%" controls>
+                <source src="videos/umkhokha.MP4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <div id="video2" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <video width="100%" controls>
+                <source src="videos/MBK.MP4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <div id="video3" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <video width="100%" controls>
+                <source src="videos/QUEENSLOBOLA.MP4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <a href="testing.html" class="back-button">&#8592;</a> 
+    
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-text">
+            <p> © Reserved Projects 2024. All rights reserved</p>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle modal display
+        document.addEventListener('DOMContentLoaded', function() {
+            var projectCards = document.querySelectorAll('.project-card');
+            var modals = document.querySelectorAll('.modal');
+            var closeButtons = document.querySelectorAll('.close');
+
+            projectCards.forEach(function(card) {
+                card.addEventListener('click', function() {
+                    var videoId = this.getAttribute('data-video');
+                    var modal = document.getElementById(videoId);
+                    modal.style.display = "block";
+                });
+            });
+
+            closeButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    modals.forEach(function(modal) {
+                        modal.style.display = "none";
+                        var video = modal.querySelector('video');
+                        video.pause(); // Stop the video when closing the modal
+                    });
+                });
+            });
+
+            window.addEventListener('click', function(event) {
+                modals.forEach(function(modal) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                        var video = modal.querySelector('video');
+                        video.pause(); // Stop the video when clicking outside the modal
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

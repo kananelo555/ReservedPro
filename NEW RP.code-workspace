@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../reservedprojects"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "NEW RP"
+	}
+}
